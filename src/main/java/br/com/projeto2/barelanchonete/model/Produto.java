@@ -9,10 +9,18 @@ package br.com.projeto2.barelanchonete.model;
  * @author sluiz
  */
 public class Produto {
+   private int id; 
    private String nome;
    private double preco;
    
+   public Produto(){
+      this.id = 0;
+      this.nome = "";
+      this.preco = 0;
+   }
+   
    public Produto(String nome, double preco){
+       this.id = 0;
        this.nome = nome;
        this.preco = preco;
    }
