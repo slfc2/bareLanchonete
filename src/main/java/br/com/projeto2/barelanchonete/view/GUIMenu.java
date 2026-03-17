@@ -5,6 +5,7 @@
 package br.com.projeto2.barelanchonete.view;
 
 import br.com.projeto2.barelanchonete.model.Produto;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -194,6 +195,8 @@ public class GUIMenu extends javax.swing.JFrame {
                 Produto produto = new Produto(nome, precoConvertido);
                 produto.apresentarProduto();
                 
+                
+                
                 jTextFieldCadastroProdutoNome.setText("");
                 jTextFieldCadastroProdutoPreco.setText("");
                 
@@ -209,15 +212,10 @@ public class GUIMenu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-       GUIMenu janelaPrincipal = new GUIMenu();
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> janelaPrincipal.setVisible(true));
-        janelaPrincipal.jInternalFrameCadastroProduto.setVisible(false);
-        
-    }
-
+    
+  public JInternalFrame getjInternalFrameCadastroProduto(){
+  return jInternalFrameCadastroProduto;
+  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastroProdutoCancelar;
     private javax.swing.JButton jButtonCadastroProdutoSalvar;

@@ -22,9 +22,7 @@ public class Banco {
         url = "jdbc:mysql://localhost:3306";
         usuario = "root";
         senha = "slfc7532";
-        
-       iniciarBanco(url,usuario,senha);
-
+     
     }
 
     public Connection conectar() {
@@ -45,15 +43,15 @@ public class Banco {
         }
     }
 
-    public void salvar(Produto produto, Connection conexao) {
+    public void salvar(String nome, double preco, Connection conexao) {
 
         String sql = "INSERT INTO produto(nome, preco) VALUES(?, ?)";
         
         try{
             PreparedStatement stmt = conexao.prepareStatement(sql);
             
-            stmt.setString(1, produto.getNome());
-            stmt.setDouble(2, produto.getPreco());
+            stmt.setString(1, nome);
+            stmt.setDouble(2, preco);
             
             int  linhasAfetadas = stmt.executeUpdate();
             
@@ -65,7 +63,7 @@ public class Banco {
             System.out.println("Produto não foi adicionado no banco de dados !");
         }
     }
-    public  void iniciarBanco(String url, String usuario, String senha){
+    public  void iniciarBanco(){
         url = "jdbc:mysql://localhost:3306";
         usuario = "root";
         senha = "slfc7532";

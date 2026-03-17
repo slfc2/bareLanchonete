@@ -4,6 +4,9 @@
  */
 package br.com.projeto2.barelanchonete.model;
 
+import br.com.projeto2.barelanchonete.controller.Banco;
+import java.sql.Connection;
+
 /**
  *
  * @author sluiz
@@ -23,6 +26,8 @@ public class Produto {
        this.id = 0;
        this.nome = nome;
        this.preco = preco;
+       
+       salvar(nome, preco);
    }
 
     /**
@@ -55,6 +60,13 @@ public class Produto {
     
     public void apresentarProduto(){
        System.out.println("Nome; "+ nome +", R$ "+preco);
+    }
+    
+    private void salvar(String nome, double preco){
+       
+      Banco b = new Banco();
+      Connection conexao = b.conectar();
+      b.salvar(nome, preco, conexao);
     }
    
 }
