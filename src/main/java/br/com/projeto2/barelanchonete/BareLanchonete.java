@@ -6,6 +6,7 @@ import br.com.projeto2.barelanchonete.model.Produto;
 import br.com.projeto2.barelanchonete.view.GUIMenu;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
  
 /**
  *
@@ -26,6 +27,13 @@ public class BareLanchonete {
        GUIMenu janelaPrincipal = new GUIMenu();
        Banco b = new Banco();
        b.iniciarBanco();
+       
+       ArrayList<Produto> produtos = b.buscarTrechoNome("carne");
+       
+       for(Produto produto: produtos) {
+           produto.apresentarProduto();
+       }
+       
        b = null;
        //Connection conexao = b.conectar();
 
