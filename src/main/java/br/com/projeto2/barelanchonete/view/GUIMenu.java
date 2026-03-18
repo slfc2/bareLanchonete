@@ -5,8 +5,11 @@
 package br.com.projeto2.barelanchonete.view;
 
 import br.com.projeto2.barelanchonete.model.Produto;
+import java.util.ArrayList;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,6 +43,15 @@ public class GUIMenu extends javax.swing.JFrame {
         jTextFieldCadastroProdutoPreco = new javax.swing.JTextField();
         jButtonCadastroProdutoSalvar = new javax.swing.JButton();
         jButtonCadastroProdutoCancelar = new javax.swing.JButton();
+        jInternalFramePesquisar = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePesquisarPorNome = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBoxPesquisarAcao = new javax.swing.JComboBox<>();
+        jTextFieldPesquisarID = new javax.swing.JTextField();
+        jButtonPesquisarConfirmar = new javax.swing.JButton();
+        jButtonPesquisarCancelar = new javax.swing.JButton();
         jMenuBarPrincipal = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemCadastroProduto = new javax.swing.JMenuItem();
@@ -91,6 +103,7 @@ public class GUIMenu extends javax.swing.JFrame {
         jInternalFrameCadastroProdutoLayout.setVerticalGroup(
             jInternalFrameCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameCadastroProdutoLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(jInternalFrameCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCadastroProdutoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCadastroProdutoNome))
@@ -102,22 +115,105 @@ public class GUIMenu extends javax.swing.JFrame {
                 .addGroup(jInternalFrameCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastroProdutoSalvar)
                     .addComponent(jButtonCadastroProdutoCancelar))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jInternalFramePesquisar.setTitle("Pesquisar pelo Nome");
+        jInternalFramePesquisar.setVisible(true);
+
+        jTablePesquisarPorNome.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTablePesquisarPorNome);
+
+        jLabel1.setText("Selecione a ação desejada");
+
+        jLabel2.setText("Qual o ID do produto");
+
+        jComboBoxPesquisarAcao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editar", "Excluir", " " }));
+
+        jButtonPesquisarConfirmar.setText("Confirmar");
+        jButtonPesquisarConfirmar.addActionListener(this::jButtonPesquisarConfirmarActionPerformed);
+
+        jButtonPesquisarCancelar.setText("Cancelar");
+
+        javax.swing.GroupLayout jInternalFramePesquisarLayout = new javax.swing.GroupLayout(jInternalFramePesquisar.getContentPane());
+        jInternalFramePesquisar.getContentPane().setLayout(jInternalFramePesquisarLayout);
+        jInternalFramePesquisarLayout.setHorizontalGroup(
+            jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFramePesquisarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                    .addGroup(jInternalFramePesquisarLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxPesquisarAcao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldPesquisarID))))
+                .addContainerGap())
+            .addGroup(jInternalFramePesquisarLayout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(jButtonPesquisarConfirmar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonPesquisarCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jInternalFramePesquisarLayout.setVerticalGroup(
+            jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFramePesquisarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBoxPesquisarAcao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldPesquisarID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonPesquisarConfirmar)
+                    .addComponent(jButtonPesquisarCancelar))
+                .addContainerGap())
         );
 
         jDesktopPane1.setLayer(jInternalFrameCadastroProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jInternalFramePesquisar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jInternalFrameCadastroProduto)
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jInternalFramePesquisar)
+                    .addContainerGap()))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addComponent(jInternalFrameCadastroProduto)
                 .addGap(0, 0, 0))
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jInternalFramePesquisar)
+                    .addContainerGap()))
         );
 
         jMenuCadastro.setText("Cadastro");
@@ -138,6 +234,7 @@ public class GUIMenu extends javax.swing.JFrame {
         jMenuPesquisar.setText("Pesquisar");
 
         jMenuItemPesquisarProduto.setText("Produto");
+        jMenuItemPesquisarProduto.addActionListener(this::jMenuItemPesquisarProdutoActionPerformed);
         jMenuPesquisar.add(jMenuItemPesquisarProduto);
 
         jMenuBarPrincipal.add(jMenuPesquisar);
@@ -210,6 +307,38 @@ public class GUIMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonCadastroProdutoSalvarActionPerformed
 
+    private void jMenuItemPesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarProdutoActionPerformed
+        // TODO add your handling code here:
+        String nome = JOptionPane.showInputDialog("Informe o Nome: ");
+        Produto produto = new Produto();
+        ArrayList<Produto> produtos = produto.pesquisar(nome);
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Preço");
+        
+        for(Produto produtoAux: produtos){
+          modelo.addRow(new Object[]{produtoAux.getId(), produtoAux.getNome(), produtoAux.getPreco()});
+          jTablePesquisarPorNome.setModel(modelo);
+        }
+        
+        jInternalFramePesquisar.setVisible(true);
+    }//GEN-LAST:event_jMenuItemPesquisarProdutoActionPerformed
+
+    private void jButtonPesquisarConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarConfirmarActionPerformed
+        // TODO add your handling code here:
+        String opcao = jComboBoxPesquisarAcao.getSelectedItem().toString();
+        System.out.println("Opção selecionada"+opcao);
+        
+        int idPesquisar = Integer.parseInt(jTextFieldPesquisarID.getText());
+        System.out.println("ID Informado"+idPesquisar);
+        if (opcao.equals("Excluir")) {
+        } else {//editar
+        
+        }
+    }//GEN-LAST:event_jButtonPesquisarConfirmarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,11 +346,22 @@ public class GUIMenu extends javax.swing.JFrame {
   public JInternalFrame getjInternalFrameCadastroProduto(){
   return jInternalFrameCadastroProduto;
   }
+  
+  public JInternalFrame getjInternalFramePesquisar() {
+      return jInternalFramePesquisar;
+  }
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastroProdutoCancelar;
     private javax.swing.JButton jButtonCadastroProdutoSalvar;
+    private javax.swing.JButton jButtonPesquisarCancelar;
+    private javax.swing.JButton jButtonPesquisarConfirmar;
+    private javax.swing.JComboBox<String> jComboBoxPesquisarAcao;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrameCadastroProduto;
+    private javax.swing.JInternalFrame jInternalFramePesquisar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCadastroProdutoNome;
     private javax.swing.JLabel jLabelCadastroProdutopreco;
     private javax.swing.JMenuBar jMenuBarPrincipal;
@@ -233,7 +373,10 @@ public class GUIMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemVendasCarrinho;
     private javax.swing.JMenu jMenuPesquisar;
     private javax.swing.JMenu jMenuVendas;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTablePesquisarPorNome;
     private javax.swing.JTextField jTextFieldCadastroProdutoNome;
     private javax.swing.JTextField jTextFieldCadastroProdutoPreco;
+    private javax.swing.JTextField jTextFieldPesquisarID;
     // End of variables declaration//GEN-END:variables
 }

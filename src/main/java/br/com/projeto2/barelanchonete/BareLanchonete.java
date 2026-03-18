@@ -40,6 +40,8 @@ public class BareLanchonete {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> janelaPrincipal.setVisible(true));
         janelaPrincipal.getjInternalFrameCadastroProduto().setVisible(false);
+        janelaPrincipal.getjInternalFramePesquisar().setVisible(false);
+        
         
     }
 }

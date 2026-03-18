@@ -6,6 +6,7 @@ package br.com.projeto2.barelanchonete.model;
 
 import br.com.projeto2.barelanchonete.controller.Banco;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -70,6 +71,18 @@ public class Produto {
       b.salvar(nome, preco, conexao);
     }
 
+    public ArrayList<Produto> pesquisar(String nome){
+      Banco b = new Banco();
+      Connection conexao = b.conectar();
+      ArrayList<Produto> produtos = b.buscarTrechoNome(nome);
+      
+      return produtos;
+    }
+    
+    public void deletar(int id){
+    
+    
+    }
     /**
      * @return the id
      */
