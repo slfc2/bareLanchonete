@@ -144,6 +144,7 @@ public class GUIMenu extends javax.swing.JFrame {
         jButtonPesquisarConfirmar.addActionListener(this::jButtonPesquisarConfirmarActionPerformed);
 
         jButtonPesquisarCancelar.setText("Cancelar");
+        jButtonPesquisarCancelar.addActionListener(this::jButtonPesquisarCancelarActionPerformed);
 
         javax.swing.GroupLayout jInternalFramePesquisarLayout = new javax.swing.GroupLayout(jInternalFramePesquisar.getContentPane());
         jInternalFramePesquisar.getContentPane().setLayout(jInternalFramePesquisarLayout);
@@ -152,7 +153,7 @@ public class GUIMenu extends javax.swing.JFrame {
             .addGroup(jInternalFramePesquisarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                     .addGroup(jInternalFramePesquisarLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jInternalFramePesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,16 +329,32 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void jButtonPesquisarConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarConfirmarActionPerformed
         // TODO add your handling code here:
+        Produto produto = new Produto();
         String opcao = jComboBoxPesquisarAcao.getSelectedItem().toString();
         System.out.println("Opção selecionada"+opcao);
         
         int idPesquisar = Integer.parseInt(jTextFieldPesquisarID.getText());
         System.out.println("ID Informado"+idPesquisar);
         if (opcao.equals("Excluir")) {
+            produto.deletar(idPesquisar);
+            JOptionPane.showMessageDialog(rootPane,"Oproduto de ID: "+idPesquisar+" foi excluido com sucesso"
+            );
+            
+            jComboBoxPesquisarAcao.setSelectedIndex(0);
+            jTextFieldPesquisarID.setText("");
+            jInternalFramePesquisar.setVisible(false);
+            
         } else {//editar
         
         }
     }//GEN-LAST:event_jButtonPesquisarConfirmarActionPerformed
+
+    private void jButtonPesquisarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarCancelarActionPerformed
+        // TODO add your handling code here:
+        jTextFieldPesquisarID.setText("");
+        jComboBoxPesquisarAcao.setSelectedIndex(0);
+        jInternalFramePesquisar.setVisible(false);
+    }//GEN-LAST:event_jButtonPesquisarCancelarActionPerformed
 
     /**
      * @param args the command line arguments

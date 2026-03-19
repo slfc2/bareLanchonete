@@ -144,5 +144,27 @@ public class Banco {
     private String normalizarTexto(String trecho){
       return Normalizer.normalize(trecho, Normalizer.Form.NFD).replace("[^\\p(ASCII)]", "");
     }
+    
+    public void deletar(int id) {
+        String sql = "DELETE FROM produto WHERE id = ?";
+        try {
+        Connection conexao = conectar();
+        
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, id);
+        
+        int linhasafetadas = stmt.executeUpdate();
+        
+        if(linhasafetadas > 0){
+            System.out.println("O produto de ID: "+id+" foi excluido com sucesso!");
+        } else{
+          System.out.println("O produto de ID: "+id+" não foi encontrado!");
+        }
+        stmt.close();
+        conexao.close();
+    } catch(SQLException e) {
+        System.out.println("Houve um erro de comunicação com o banco no metodo Deletar");
+    }
+  }
 }
 
