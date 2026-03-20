@@ -84,6 +84,19 @@ public class Produto {
       Connection conexao = b.conectar();
       b.deletar(id);
     }
+    
+    public void editar(String nome,double preco, int id){
+      Banco b = new Banco();
+      Connection conexao = b.conectar();
+      b.editar(nome, preco, id);
+    }
+    
+    public Produto buscarPorId(int id){
+      Banco b = new Banco();
+      Connection conexao = b.conectar();
+      Produto produto = b.buscarPorId(id);
+      return produto;
+    }
     /**
      * @return the id
      */

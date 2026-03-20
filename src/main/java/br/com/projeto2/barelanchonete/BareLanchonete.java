@@ -41,6 +41,7 @@ public class BareLanchonete {
         java.awt.EventQueue.invokeLater(() -> janelaPrincipal.setVisible(true));
         janelaPrincipal.getjInternalFrameCadastroProduto().setVisible(false);
         janelaPrincipal.getjInternalFramePesquisar().setVisible(false);
+        janelaPrincipal.getjInternalFrameEditarCadastro().setVisible(false);
         
         
     }

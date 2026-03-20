@@ -166,5 +166,63 @@ public class Banco {
         System.out.println("Houve um erro de comunicação com o banco no metodo Deletar");
     }
   }
+    
+        
+    public void editar(String nome,double preco, int id){
+      String sql = "UPDATE produto SET nome = ?, preco = ? WHERE id = ?";
+    
+      try{
+          Connection conexao = conectar();
+          PreparedStatement stmt = conexao.prepareCall(sql);
+          
+          stmt.setString(1, nome);
+          stmt.setDouble(2, preco);
+          stmt.setInt(3, id);
+          
+          int linhasAfetadas = stmt.executeUpdate();
+          
+          if(linhasAfetadas > 0){
+              System.out.println("O cadastro foi editado com Sucesso!");
+          } else {
+              System.out.println("Não houve alteração na edição do cadastro");
+          }
+          
+          stmt.close();
+          conexao.close();
+      } catch(SQLException e){
+          System.out.println("Não foi possivel conectar no banco de dados para o metodo editar");
+      }
+      
+    }
+     public Produto buscarPorId(int id){
+         String sql = "SELECT * FROM produto WHERE id = ?";
+         Produto produtoEncontrado = null;
+         
+         try {
+             Connection conexao = conectar();
+             PreparedStatement stmt =conexao.prepareStatement(sql);
+             
+             stmt.setInt(1, id);
+             
+             ResultSet rs = stmt.executeQuery();
+             
+             if (rs.next()){
+                String nome = rs.getString("nome");
+                double preco = rs.getDouble("preco");
+                produtoEncontrado = new Produto(nome, preco);
+                produtoEncontrado.setId(id);
+             }
+             
+             stmt.close();
+             conexao.close();
+             
+             
+             
+         } catch(SQLException e) {
+             System.out.println("Não foi possivel conectar no banco pelo metodo buscarPorId");
+         }
+         return produtoEncontrado;
+          
+      }
 }
 
