@@ -495,6 +495,8 @@ public class GUIMenu extends javax.swing.JFrame {
           modelo.addRow(new Object[]{produtoAux.getId(), produtoAux.getNome(), produtoAux.getPreco()});
           jTablePesquisarPorNome.setModel(modelo);
         }
+        
+        jInternalFramePesquisar.setVisible(true);
     }//GEN-LAST:event_jMenuItemEdicaoProdutoActionPerformed
 
     public JInternalFrame getjInternalFrameEditarCadastro () {
