@@ -63,6 +63,9 @@ public class Banco {
                System.out.println("Produto adicionado com sucesso!");
             }
             
+            stmt.close();
+            conexao.close();
+            
         } catch(SQLException e) {
             System.out.println("Produto não foi adicionado no banco de dados !");
         }
@@ -224,5 +227,29 @@ public class Banco {
          return produtoEncontrado;
           
       }
+     public void adicionarCarrinho(Produto produto, int quantidade, Connection conexao) {
+
+        String sql = "INSERT INTO carrinho(nome, preco, carrinho) VALUES(?, ?,?)";
+        
+        try{
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            
+            stmt.setString(1, produto.getNome());
+            stmt.setDouble(2, produto.getPreco());
+            stmt.setInt(3, quantidade);
+            
+            int  linhasAfetadas = stmt.executeUpdate();
+            
+            if (linhasAfetadas > 0){
+               System.out.println("Produto adicionado no carrinho com sucesso!");
+            }
+            
+            stmt.close();
+            conexao.close();
+            
+        } catch(SQLException e) {
+            System.out.println("Produto não foi adicionado no carrinho do banco de dados !");
+        }
+    }
 }
 

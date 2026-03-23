@@ -97,6 +97,14 @@ public class Produto {
       Produto produto = b.buscarPorId(id);
       return produto;
     }
+    
+    public void adicionarCarrinho(int id, int quantidade){
+    
+      Produto produto = buscarPorId(id);
+      Banco b = new Banco();
+      Connection conexao =b.conectar();
+      b.adicionarCarrinho(produto, quantidade, conexao);
+    }
     /**
      * @return the id
      */

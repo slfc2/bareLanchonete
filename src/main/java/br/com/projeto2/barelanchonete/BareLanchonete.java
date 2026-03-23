@@ -2,6 +2,7 @@
 package br.com.projeto2.barelanchonete;
 
 import br.com.projeto2.barelanchonete.controller.Banco;
+import br.com.projeto2.barelanchonete.model.Carrinho;
 import br.com.projeto2.barelanchonete.model.Produto;
 import br.com.projeto2.barelanchonete.view.GUIMenu;
 import java.sql.Connection;
@@ -24,6 +25,7 @@ public class BareLanchonete {
                 
     }*/
     public static void main(String args[]) {
+       
        GUIMenu janelaPrincipal = new GUIMenu();
        Banco b = new Banco();
        b.iniciarBanco();

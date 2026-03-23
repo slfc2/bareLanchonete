@@ -4,6 +4,7 @@
  */
 package br.com.projeto2.barelanchonete.view;
 
+import br.com.projeto2.barelanchonete.model.Carrinho;
 import br.com.projeto2.barelanchonete.model.Produto;
 import java.util.ArrayList;
 import javax.swing.JInternalFrame;
@@ -425,6 +426,7 @@ public class GUIMenu extends javax.swing.JFrame {
     private void jButtonPesquisarConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarConfirmarActionPerformed
         // TODO add your handling code here:
         Produto produto = new Produto();
+        Carrinho carrinho = new Carrinho();
         String opcao = jComboBoxPesquisarAcao.getSelectedItem().toString();
         System.out.println("Opção selecionada"+opcao);
         
@@ -437,6 +439,7 @@ public class GUIMenu extends javax.swing.JFrame {
             
             jComboBoxPesquisarAcao.setSelectedIndex(0);
             jTextFieldPesquisarID.setText("");
+            jTextFieldPesquizarQuantidade.setText("");
             jInternalFramePesquisar.setVisible(false);
             
         } else if(opcao.equals("Editar")) {//editar
@@ -449,9 +452,15 @@ public class GUIMenu extends javax.swing.JFrame {
              jTextFieldEditarPreco.setText(produtoRecuperado.getPreco()+"");
              jInternalFrameEditarCadastro.setVisible(true);
         } else if(opcao.equals("Adicionar no carrinho")) {//adicionar no carrinho
+            int id = Integer.parseInt(jTextFieldPesquisarID.getText());
+            int quantidade = Integer.parseInt(jTextFieldPesquizarQuantidade.getText());
+            
+            produto.adicionarCarrinho(id, quantidade);
+            
             JOptionPane.showMessageDialog(rootPane,"O produto foi adicionado ao carrinho ");
             jTextFieldPesquisarID.setText("");
             jComboBoxPesquisarAcao.setSelectedIndex(0);
+            jTextFieldPesquizarQuantidade.setText("");
             jInternalFramePesquisar.setVisible(false);
             
     }//GEN-LAST:event_jButtonPesquisarConfirmarActionPerformed
