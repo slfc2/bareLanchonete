@@ -7,6 +7,8 @@ package br.com.projeto2.barelanchonete.view;
 import br.com.projeto2.barelanchonete.model.Carrinho;
 import br.com.projeto2.barelanchonete.model.Produto;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -529,7 +531,7 @@ public class GUIMenu extends javax.swing.JFrame {
              jTextFieldEditarNome.setText(produtoRecuperado.getNome());
              jTextFieldEditarPreco.setText(produtoRecuperado.getPreco()+"");
              jInternalFrameEditarCadastro.setVisible(true);
-        } else if(opcao.equals("Adicionar no carrinho")) {//adicionar no carrinho
+        } else if(opcao.equals("Adicionar no Carrinho")) {//adicionar no carrinho
             int id = Integer.parseInt(jTextFieldPesquisarID.getText());
             int quantidade = Integer.parseInt(jTextFieldPesquizarQuantidade.getText());
             
@@ -605,19 +607,25 @@ public class GUIMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Produto produto = new Produto();
-        ArrayList<Produto> produtos = produto.recuperarCarrinho();
+        HashMap<Produto, Integer> carrinho = produto.recuperarCarrinho();
         
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nome");
         modelo.addColumn("Preço");
+        modelo.addColumn("Quantidade");
         
-        int total = 0;
-        for(Produto produtoAux: produtos){
-          modelo.addRow(new Object[]{produtoAux.getId(), produtoAux.getNome(), produtoAux.getPreco()});
-          jTableCarrinho.setModel(modelo);
-          total+=produtoAux.getPreco();
+        double total = 0;
+        for(Map.Entry<Produto, Integer> item : carrinho.entrySet()){
+            Produto l = item.getKey();
+            int quantidade = item.getValue();
+            modelo.addRow(new Object[]{l.getId(), l.getNome(), l.getPreco(), quantidade});
+            jTableCarrinho.setModel(modelo);
+            total +=(l.getPreco()*quantidade);
+            System.out.println(l.getPreco()*quantidade);
         }
+        
+        System.out.println("");
         
         jTextFieldCarrinhoTotal.setText(total+"");
         
@@ -637,6 +645,9 @@ public class GUIMenu extends javax.swing.JFrame {
   
   public JInternalFrame getjInternalFramePesquisar() {
       return jInternalFramePesquisar;
+  }
+  public JInternalFrame getJInternalFrameCarrinho(){
+    return jInternalFrameCarrinho;
   }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables

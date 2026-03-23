@@ -44,6 +44,7 @@ public class BareLanchonete {
         janelaPrincipal.getjInternalFrameCadastroProduto().setVisible(false);
         janelaPrincipal.getjInternalFramePesquisar().setVisible(false);
         janelaPrincipal.getjInternalFrameEditarCadastro().setVisible(false);
+        janelaPrincipal.getJInternalFrameCarrinho().setVisible(false);
         
         
     }

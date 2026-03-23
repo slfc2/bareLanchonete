@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Banco {
 
@@ -229,7 +230,7 @@ public class Banco {
       }
      public void adicionarCarrinho(Produto produto, int quantidade, Connection conexao) {
 
-        String sql = "INSERT INTO carrinho(nome, preco, carrinho) VALUES(?, ?,?)";
+        String sql = "INSERT INTO carrinho(nome, preco, quantidade) VALUES(?, ?, ?)";
         
         try{
             PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -251,5 +252,34 @@ public class Banco {
             System.out.println("Produto não foi adicionado no carrinho do banco de dados !");
         }
     }
+     
+     public HashMap<Produto, Integer> buscarCarrinho(Connection conexao){
+         String sql = "SELECT * FROM carrinho";
+         HashMap<Produto, Integer> carrinho = new HashMap<>();
+         
+         try {
+              PreparedStatement stmt = conexao.prepareStatement(sql);
+              ResultSet rs = stmt.executeQuery();
+              
+              while(rs.next()){
+                 int id = rs.getInt("id");
+                 String nome = rs.getString("nome");
+                 double preco = rs.getDouble("preco");
+                 int quantidade = rs.getInt("quantidade");
+                 
+                 Produto produto = new Produto(nome, preco);
+                 produto.setId(id);
+                 carrinho.put(produto, quantidade);
+                 
+              }
+              rs.close();
+              stmt.close();
+              conexao.close();
+         } catch(SQLException e){
+             System.out.println("Erro ao buscar todos os produtos do banco de dados no metodo buscarCarrinho()");
+         }
+         
+        return carrinho;
+     }
 }
 

@@ -7,6 +7,7 @@ package br.com.projeto2.barelanchonete.model;
 import br.com.projeto2.barelanchonete.controller.Banco;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -102,8 +103,15 @@ public class Produto {
     
       Produto produto = buscarPorId(id);
       Banco b = new Banco();
-      Connection conexao =b.conectar();
+      Connection conexao = b.conectar();
       b.adicionarCarrinho(produto, quantidade, conexao);
+    }
+    
+    public HashMap<Produto, Integer> recuperarCarrinho(){
+      Banco b = new Banco();
+      Connection conexao =b.conectar();   
+      HashMap<Produto, Integer> carrinho = b.buscarCarrinho(conexao);
+    return carrinho;
     }
     /**
      * @return the id

@@ -1,4 +1,5 @@
 br/com/projeto2/barelanchonete/controller/Banco.class
 br/com/projeto2/barelanchonete/view/GUIMenu.class
 br/com/projeto2/barelanchonete/BareLanchonete.class
+br/com/projeto2/barelanchonete/model/Carrinho.class
 br/com/projeto2/barelanchonete/model/Produto.class
